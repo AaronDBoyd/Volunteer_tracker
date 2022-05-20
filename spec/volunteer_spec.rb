@@ -76,4 +76,24 @@ describe Volunteer do
       expect(Volunteer.find_by_project(project2.id)).to(eq([volunteer, volunteer2]))
     end
   end
+
+  describe '#update' do
+
+end
+
+describe '#delete' do
+
+end
+
+describe '#project' do
+  it("finds the project a volunteer belongs to") do
+    volunteer = Volunteer.new(:name =>"Naima", :project_id =>@project.id, :id =>nil)
+    volunteer.save()
+    expect(volunteer.project()).to(eq(@project))
+  end
+end
+
+describe '.clear' do
+
+end
 end
