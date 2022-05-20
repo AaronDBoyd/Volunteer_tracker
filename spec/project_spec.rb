@@ -93,7 +93,14 @@ describe Project do
   end
 
   describe '.clear' do
-
+    it('clears all projects') do
+      project = Project.new(:title =>'Giant Steps',:id => nil)
+      project.save()
+      project2 = Project.new(:title =>'Blue',:id => nil)
+      project2.save()
+      Project.clear
+      expect(Project.all).to(eq([]))
+    end
   end
 
   describe('.search') do
