@@ -86,26 +86,33 @@ describe Volunteer do
     end
   end
 
-describe '#delete' do
-  it("deletes a volunteer by id") do
-    volunteer = Volunteer.new(:name =>"Giant Steps", :project_id =>@project.id,:id =>nil)
-    volunteer.save()
-    volunteer2 = Volunteer.new(:name =>"Naima", :project_id =>@project.id, :id =>nil)
-    volunteer2.save()
-    volunteer.delete()
-    expect(Volunteer.all).to(eq([volunteer2]))
+  describe '#delete' do
+    it("deletes a volunteer by id") do
+      volunteer = Volunteer.new(:name =>"Giant Steps", :project_id =>@project.id,:id =>nil)
+      volunteer.save()
+      volunteer2 = Volunteer.new(:name =>"Naima", :project_id =>@project.id, :id =>nil)
+      volunteer2.save()
+      volunteer.delete()
+      expect(Volunteer.all).to(eq([volunteer2]))
+    end
   end
-end
 
-describe '#project' do
-  it("finds the project a volunteer belongs to") do
-    volunteer = Volunteer.new(:name =>"Naima", :project_id =>@project.id, :id =>nil)
-    volunteer.save()
-    expect(volunteer.project()).to(eq(@project))
+  describe '#project' do
+    it("finds the project a volunteer belongs to") do
+      volunteer = Volunteer.new(:name =>"Naima", :project_id =>@project.id, :id =>nil)
+      volunteer.save()
+      expect(volunteer.project()).to(eq(@project))
+    end
   end
-end
 
-describe '.clear' do
-
-end
+  describe '.clear' do
+    it("clears all volunteers") do
+      volunteer = Volunteer.new(:name =>"Giant Steps", :project_id =>@project.id, :id =>nil)
+      volunteer.save()
+      volunteer2 = Volunteer.new(:name =>"Naima", :project_id =>@project.id, :id =>nil)
+      volunteer2.save()
+      Volunteer.clear()
+      expect(Volunteer.all).to(eq([]))
+    end
+  end
 end
