@@ -1,0 +1,11 @@
+require('sinatra')
+require('sinatra/reloader')
+require('./lib/album')
+require('pry')
+require('./lib/song')
+require('./lib/artist')
+also_reload('lib/**/*.rb')
+require('pg')
+require('./db_access.rb')
+
+# DB = PG.connect({:dbname => 'volunteer_tracker'})
