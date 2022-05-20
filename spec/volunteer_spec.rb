@@ -78,8 +78,13 @@ describe Volunteer do
   end
 
   describe '#update' do
-
-end
+    it("updates a volunteer by id") do
+      volunteer = Volunteer.new(:name =>"Naima", :project_id =>@project.id, :id =>nil)
+      volunteer.save()
+      volunteer.update("Mr. P.C.", @project.id)
+      expect(volunteer.name).to(eq("Mr. P.C."))
+    end
+  end
 
 describe '#delete' do
 
