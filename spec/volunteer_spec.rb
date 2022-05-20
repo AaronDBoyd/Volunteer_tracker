@@ -87,7 +87,14 @@ describe Volunteer do
   end
 
 describe '#delete' do
-
+  it("deletes a volunteer by id") do
+    volunteer = Volunteer.new(:name =>"Giant Steps", :project_id =>@project.id,:id =>nil)
+    volunteer.save()
+    volunteer2 = Volunteer.new(:name =>"Naima", :project_id =>@project.id, :id =>nil)
+    volunteer2.save()
+    volunteer.delete()
+    expect(Volunteer.all).to(eq([volunteer2]))
+  end
 end
 
 describe '#project' do
